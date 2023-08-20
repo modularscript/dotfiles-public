@@ -1,0 +1,2 @@
+require("modularscript")
+print("Hello")
