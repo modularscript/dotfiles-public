@@ -1,0 +1,100 @@
+" Try to make similar like sublime text vintage and my vscode vim settings
+" and make it sync with OS commands
+set nocompatible
+autocmd VimEnter * startinsert
+inoremap jj <Esc>
+
+Plug 'vim-scripts/ReplaceWithRegister'
+" Copy with Ctrl + c
+inoremap <C-c> <Esc>"+yiw
+" Paste with Ctrl + v
+inoremap <C-v> <C-r><C-o>+
+" Cut with Ctrl + x
+inoremap <C-x> <Esc>"+diw
+
+nnoremap <C-n> :nohl<CR>
+nnoremap <C-r> :redo<CR>
+
+" Disable certain keys {=> disabled in idea settings too}
+map <C-d> <Nop>
+map <C-c> <Nop>
+map <C-v> <Nop>
+map <C-x> <Nop>
+map <C-w> <Nop>
+map <C-a> <Nop>
+map <C-f> <Nop>
+
+set relativenumber
+set scrolloff=10
+set history=1000
+set showmode
+set showcmd
+set visualbell
+set exchange
+set surround
+set textobj-indent
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+" leader key
+let mapleader = ' '
+" redo
+noremap U <C-r>
+" sync Vim clipboard with OS clipboard
+set clipboard+=unnamed
+set clipboard^=unnamed,unnamedplus
+" config source cs
+noremap <leader>cs :source ~/.ideavimrc<cr>
+" smart line join {shift + j}
+set ideajoin
+" highlight search results
+set hlsearch
+" remove search highlights
+noremap <Esc> :nohlsearch<cr>
+" case insensitive search
+set ignorecase
+" enable case-sensitive search when uppercase letter is present
+set smartcase
+" search while typing
+set incsearch
+"  https://github.com/TheBlob42/idea-which-key install manual
+set which-key
+" disable the timeout option
+set notimeout
+" increase the timeoutlen (default: 1000), don't add space around the equal sign
+set timeoutlen=5000
+let g:WhichKey_FontSize = 20
+let g:WhichKey_PrefixColor = "#a403fe"
+let g:WhichKey_CommandColor = "#01ffff"
+let g:WhichKey_PrefixStyle = "bold"
+let g:WhichKey_KeyStyle = "italic"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKey_ShowTypedSequence = "false"
+"  Enable which-key plugin and install intellimacs
+source ~/.intellimacs/which-key.vim
+" install https://github.com/acejump/AceJump#acejump and easy motion
+set sneak
+Plug 'easymotion/vim-easymotion'
+map <leader>J <Plug>(easymotion-s)
+map <leader>j <Plug>(easymotion-f)
+" NERDTree TODO: settings
+Plug 'preservim/nerdtree'
+map <leader>b :NERDTreeToggle<CR>
+":NERDTreeFocus
+":NERDTreeToggle
+":NERDTreeFind
+":NERDTreeRefreshRoot
+lg 'tpope/vim-commentary'
+set quickscope
+set highlightedyank
+let g:highlightedyank_highlight_duration = "5000"
+let g:highlightedyank_highlight_color = "rgba(57, 62, 65, 255)"
+
+"TODO: actions as requirements in idea IDE's ideavim
+
+" code information
+nnoremap <leader>d :action ShowHoverInfo<CR>
+nnoremap <leader>e :action ShowErrorDescription<CR>
+"comment
+nnoremap <C-/> :action CommentByLineComment<CR>
+" Map Ctrl + Shift + / to block comment
+nmap <C-S-/> <Action>(CommentByBlockComment)
+vmap <C-S-/> <Action>(CommentByBlockComment)
