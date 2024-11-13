@@ -5,15 +5,15 @@ set keymodel=startsel,stopsel
 set backspace=indent,eol,start
 autocmd VimEnter * startinsert
 inoremap jj <Esc>
-inoremap <Leader>n <Esc>
+"inoremap <Leader>n <Esc>
 Plug 'vim-scripts/ReplaceWithRegister'
 " Copy with Ctrl + c
 inoremap <C-c> <Esc>"+yiw
 " Paste with Ctrl + v
-inoremap <C-v> <C-r><C-o>+
+inoremap <C-v> <C-r><C-o>
 " Cut with Ctrl + x
 inoremap <C-x> <Esc>"+diw
-
+nnoremap <A-z> <C-c><CR>
 nnoremap <C-n> :nohl<CR>
 nnoremap <C-r> :redo<CR>
 
