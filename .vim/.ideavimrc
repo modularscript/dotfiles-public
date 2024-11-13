@@ -1,9 +1,11 @@
 " Try to make similar like sublime text vintage and my vscode vim settings
 " and make it sync with OS commands
 set nocompatible
+set keymodel=startsel,stopsel
+set backspace=indent,eol,start
 autocmd VimEnter * startinsert
 inoremap jj <Esc>
-
+inoremap <Leader>n <Esc>
 Plug 'vim-scripts/ReplaceWithRegister'
 " Copy with Ctrl + c
 inoremap <C-c> <Esc>"+yiw
@@ -48,7 +50,7 @@ set ideajoin
 " highlight search results
 set hlsearch
 " remove search highlights
-noremap <Esc> :nohlsearch<cr>
+nnoremap <Esc> :nohlsearch<cr>
 " case insensitive search
 set ignorecase
 " enable case-sensitive search when uppercase letter is present
@@ -82,13 +84,13 @@ map <leader>b :NERDTreeToggle<CR>
 ":NERDTreeToggle
 ":NERDTreeFind
 ":NERDTreeRefreshRoot
-lg 'tpope/vim-commentary'
+Plug 'vim-commentary'
 set quickscope
 set highlightedyank
 let g:highlightedyank_highlight_duration = "5000"
 let g:highlightedyank_highlight_color = "rgba(57, 62, 65, 255)"
 
-"TODO: actions as requirements in idea IDE's ideavim
+"TODO: actions as requirements in idea IDE's  enable => ideavim track actions ID's
 
 " code information
 nnoremap <leader>d :action ShowHoverInfo<CR>
@@ -98,3 +100,16 @@ nnoremap <C-/> :action CommentByLineComment<CR>
 " Map Ctrl + Shift + / to block comment
 nmap <C-S-/> <Action>(CommentByBlockComment)
 vmap <C-S-/> <Action>(CommentByBlockComment)
+" file structure{methods}
+map <leader>sp <Action>(FileStructurePopup)
+map <leader>u <Action>(FindUsages)
+map <leader>us <Action>(ShowUsages)
+map <leader>vs <Action>(ViewSource)
+map <leader>im <Action>(QuickImplementations)
+map <leader>im <Action>(QuickImplementations)
+map <leader>ti <Action>(ExpressionTypeInfo)
+map <leader>fp <Action>(FindInPath)
+map <leader>fr <Action>(ReplaceInPath)
+"for terminal go to keymap > others > Tool View Modes > and put shortcuts.
+"=> Window > Active Tool Window > Hide Active Tool Window
+"=> open settings > Tools > Terminal > Override IDE shortcuts {uncheck}
