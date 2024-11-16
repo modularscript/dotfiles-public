@@ -2,8 +2,12 @@
 " and make it sync with OS commands
 set nocompatible
 set keymodel=startsel,stopsel
+set relativenumber
+set number
 set backspace=indent,eol,start
 autocmd VimEnter * startinsert
+set selectmode=mouse,key
+set mouse=a
 inoremap jj <Esc>
 "inoremap <Leader>n <Esc>
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -70,6 +74,7 @@ let g:WhichKey_PrefixStyle = "bold"
 let g:WhichKey_KeyStyle = "italic"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
 let g:WhichKey_ShowTypedSequence = "false"
+Plugin 'tpope/vim-surround'
 "  Enable which-key plugin and install intellimacs
 source ~/.intellimacs/which-key.vim
 " install https://github.com/acejump/AceJump#acejump and easy motion
